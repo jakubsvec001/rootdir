@@ -1,11 +1,13 @@
 <html>
     <head>
+        <meta name='button demo' content='a simple button demo using Brython.'>
+        <meta name='keywords' content='Python, Brython'>
+        <meta charset="iso-8859-1">
+        <script type='text/javascript' src='src/brython.js'></script>
         <link rel="stylesheet" type="text/css" href="index.css"/> 
-        <title>
-            Hello Wurld!
-	</title>
+        <title>Hello Wurld!</title>
     </head>    
-   <body>
+   <body onload="brython(1)">
        <h1 class="species"> A timeportal into 1991</h1>
        <a href='https://en.wikipedia.org/wiki/Time_portal'>
           <h3>time portal</h3>
@@ -13,5 +15,18 @@
        <p> This is a very crude way to build a website using html tags</p>
        <img src="logit.png"/>
        <p>Here is a logit</p>
+       <script type="text/python">
+
+        from browser import document
+
+        def change(event):
+            display = document["zone"].style.display
+            document["zone"].style.display = "inline" if display == "none" else "none"
+
+        document["discover"].bind("click", change)
+        </script>
+        <p>Please don't touch that button.
+        <button id='discover'>Touch me.</button></p>
+        <img id='zone' src='fakedata.png' style="display:none" />
    </body>
 </html>
